@@ -1,0 +1,12 @@
+body {
+    font-size: 72.5%;
+    font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+}
+
+div.demo {
+    padding:12px;
+    font-family: "Trebuchet MS", "Arial", "Helvetica", "Verdana", "sans-serif";
+}
+
+#demo-link { font-size:11px;  padding-top: 6px; clear: both; overflow: hidden; }
+#demo-link a span.ui-icon { float:left; margin-right:3px; }

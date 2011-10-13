@@ -1,0 +1,82 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <script type="text/javascript" src="common.js"></script>
+    <script>
+    //var googleTab; // tab with openned Google page
+    
+    window.addEventListener("load", init, false);
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-26179092-1']);
+    _gaq.push(['_trackPageview']);
+
+    function init()
+    {
+        var ga = document.createElement('script'); 
+        ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; 
+        s.parentNode.insertBefore(ga, s);
+                
+        var theButton;
+        var popupTitle = i18n.get('popup_title');
+        var ToolbarUIItemProperties =
+        {
+            title: popupTitle,
+            icon: "icons/cgm18.png",
+            popup:
+            {
+                href: "popup.html",
+                width: 510,
+                height: 530
+            }
+        }
+
+        theButton = opera.contexts.toolbar.createItem(ToolbarUIItemProperties);
+        opera.contexts.toolbar.addItem(theButton);
+
+        opera.extension.onconnect = function(event) {
+            //console.log('Registration from ' + event.origin);
+            
+            if (event.origin.indexOf("mail.google.com") > -1) {
+    
+                var googleTab = event.source;
+                
+                googleTab.postMessage({action: cgmMessages.MESSAGES, messages: cgmMessages});
+                //console.log('tab: ' + googleTab);
+                
+                var o = cgm.common.loadLayout();
+                //console.log('layout from storage: ' + o.visible);
+                googleTab.postMessage(o);
+                
+                //console.log('CGM, background, send messages and layout to tab');
+                return ;
+            }
+            
+            if (event.origin.indexOf("popup.html") == -1 || event.origin.indexOf('widget://') == -1 ) {
+                console.log('CGM, background, not a popup and not a widget');
+                return;
+            }
+            
+            var tab = opera.extension.tabs.getFocused();
+            if (tab) {
+                if (tab.url.indexOf("mail.google.com") == -1) {
+                    event.source.postMessage({action: cgmMessages.WRONG_URL_MSG});
+                    console.log('CGM, background, sent wrong url notification to popup');
+                    return;
+                }
+                //tab.postMessage(cgmMessages);
+                tab.postMessage({action: cgmMessages.PORT_REQUEST}, [event.source] );
+                opera.postError('CGM, background, forward port request to injected');
+            } else {
+                opera.postError('CGM, background, no active tab');
+            }
+        }
+    }
+    //console.log('storage: ' + window.localStorage.getItem('linksOrder'));
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

@@ -1,4 +1,5 @@
-﻿# CGM: Custom Google™ Menu, v.1.0
+﻿## CGM: Custom Google™ Menu, v.1.0
+#
 
 Custom Google™ Menu aims to help you arrange links to Google services on the Gmail™ page. Links are represented as boxes and the new layout is created by dragging and dropping these boxes. It works both in Opera and Chrome browsers. This extension is a result of further work on [Reader Is Back](https://github.com/fralik/Reader-is-back) extension.
 

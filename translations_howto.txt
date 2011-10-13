@@ -1,0 +1,49 @@
+﻿How to add translation?
+=======================
+
+In general there are two types of information that we want to translate: used in the extension metafile and used in the extension itself. The following describes where the information is stored based for a particular browser.
+
+Opera extension
+---------------
+The metainformation about the extension can be found in _config.xml_ file. The _name_ field should be left as is. Do not translate the name. We are interested in _description_ field. The localization consist in adding multiple versions of _description_ element, specifying their respective language. The format of _description_ tag:
+    <description xml:lang="locale">Your translation</description>
+Change _locale_ string to the actual name of the locale which is the standard IANA language subtag (http://www.iana.org/assignments/language-subtag-registry). You may also want to refer to Opera manual: http://dev.opera.com/articles/view/creating-multilingual-extensions/ Note, that you should refer only to the information describing the translation of the metafile.
+
+Content localization.
+To translate the content open _common.js_ file and edit _i18n.messages_ variable. The format goes like this:
+    'ID':
+    {
+        'default': 'Default translation, which is used if browser uses locale that is not supported by our extension. Generally, this means text in English.',
+        'localeName': 'translation text'
+    },
+    
+For example, if we have the following block
+    'app_name':
+    {
+        'default': 'Custom Google Menu',
+        'ru': 'Прокачаем–ка гугловское–меню'
+    }
+and you want to add German translation, then the result will be
+    'app_name':
+    {
+        'default': 'Custom Google Menu',
+        'ru': 'Прокачаем–ка гугловское–меню'
+        'de': 'Das neue Menü für Google',
+    }
+
+    
+Google extension
+----------------
+
+Google uses slightly different method of internatialization. All translations are done in *_locales* folder. This folder contains subfolders named by a locale name (complete list of supported locales http://code.google.com/chrome/webstore/docs/i18n.html#localeTable). Each subfolder contains file _messages.json_. To make a translation you should:
+1. Make a new folder under *_locales* folder.
+2. Copy existing _messages.json_ files from another local folder to newly created.
+3. Translate _messsages_ in the file. You can leave _description_ fields as is.
+
+
+
+
+
+
+
+

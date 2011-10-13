@@ -1,0 +1,32 @@
+﻿{
+    "name": "CGM: Custom Google™ Menu",
+    "version": "1.0",
+    "description": "__MSG_extDescription__",
+    "default_locale": "en",
+    "background_page" : "background.html",
+    "content_scripts" : 
+    [
+        {
+            "matches" : ["*://mail.google.com/*"],
+            "run_at" : "document_idle",
+            "all_frames" : false,
+            "js" : ["common.js", "includes/cgmInjected.js"]
+        }
+    ],
+    "page_action": 
+    {
+        "default_icon": "icons/cgm16.png",
+        "default_title" : "Customize menu",
+        "default_popup" : "popup.html"
+    },
+    "icons":
+    {
+        "16": "icons/cgm16.png",
+        "48": "icons/cgm48.png",
+        "128": "icons/cgm128.png"
+    },
+    "permissions": 
+    [
+        "tabs", "*://ajax.googleapis.com/*", "*://ssl.google-analytics.com/*", "*://www.google.com/*"
+    ]
+}
