@@ -5,7 +5,7 @@ Custom Google™ Menu aims to help you arrange links to Google services on the G
 
 ## Installation process
 
-However, you could build the extension from the source code I encorage you to download it from [Opera Extensions]() or [Chrome Extensions]() websites.
+However, you could build the extension from the source code I encorage you to download it from [Opera Extensions]() or [Chrome Extensions](https://chrome.google.com/webstore/detail/jlmhhcdodlafcgaopokedcaejpbiagkk) websites.
 
 ## Known issues
 
