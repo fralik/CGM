@@ -61,6 +61,7 @@
     var toDo = Array();
     // points to the communication port
     var popupPort = null;
+    var origin = ""; // URL to which the menu is appplied
 
     function createLinks(layout)
     {
@@ -93,8 +94,13 @@
 
     $(document).ready(function() {
 
+        if (cgm.common.isChrome()) {
+        } else {
+            origin = opera.extension.bgProcess.getUrl();
+        }
+        
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     
         $( "#visible, #hidden" ).sortable({
@@ -148,7 +154,7 @@
 
             sendMessage({action: "layout", visible: visibleItems, hidden: hiddenItems});
 
-            cgm.common.saveLayout({action: "layout", visible: visibleItems, hidden: hiddenItems});
+            cgm.common.saveLayout(origin, {action: "layout", visible: visibleItems, hidden: hiddenItems});
 
             window.close();
         });

@@ -242,7 +242,7 @@ cgm.isChrome = function() {
 cgm.init = function() {
     var gbar, frame;
     
-    if (window.location.hostname.indexOf('mail.google.com') == -1) {
+    if (window.location.hostname.indexOf('.google.') == -1) {
         cgm.dlog('CGM, injected, initVariables: we are not on Gmail, we are at ' + window.location.hostname);
         //alert(window.location.hostname);
         return ;
@@ -254,26 +254,33 @@ cgm.init = function() {
         return;
     }
         
-    frame = window.frames["canvas_frame"];
-    if (frame == null) {
-        //cgm.dlog('CGM, injected, initVariables: no frame');
-        //return false;
-        cgm.frameErr++;
-        if (cgm.frameErr == cgm.numErrors) {
-            cgm.frameErr = 0;
-            return;
-        } else
-            return cgm.setTimeout();
+    // NB! Google tends to change the ID from time to time.
+    gbar = document.getElementById('gbz');
+    if (gbar == null) {
+        frame = window.frames["canvas_frame"];
+        if (frame == null) {
+            //cgm.dlog('CGM, injected, initVariables: no frame');
+            //return false;
+            cgm.frameErr++;
+            if (cgm.frameErr == cgm.numErrors) {
+                cgm.frameErr = 0;
+                return;
+            } else
+                return cgm.setTimeout();
+        }
+        
+        if (cgm.isChrome()) {
+            cgm.curDocument = frame.contentDocument;
+        } else {
+            cgm.curDocument = frame.document;
+        }
+        gbar = cgm.curDocument.getElementById('gbz');
+    }
+    else {
+        // We are on some page with Google service, but not on Gmail
+        cgm.curDocument = document;
     }
     
-    if (cgm.isChrome()) {
-        cgm.curDocument = frame.contentDocument;
-    } else {
-        cgm.curDocument = frame.document;
-    }
-    
-    // Google tends to change the ID from time to time.
-    gbar = cgm.curDocument.getElementById('gbz');
     if (gbar == null) {
         //cgm.dlog('CGM, injected, initVariables: no gbar');
         //return false;

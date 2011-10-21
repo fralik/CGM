@@ -39,14 +39,14 @@
         opera.extension.onconnect = function(event) {
             //console.log('Registration from ' + event.origin);
             
-            if (event.origin.indexOf("mail.google.com") > -1) {
+            if (event.origin.indexOf(".google.") > -1) {
     
                 var googleTab = event.source;
                 
                 googleTab.postMessage({action: cgmMessages.MESSAGES, messages: cgmMessages});
                 //console.log('tab: ' + googleTab);
                 
-                var o = cgm.common.loadLayout();
+                var o = cgm.common.loadLayout(event.origin);
                 //console.log('layout from storage: ' + o.visible);
                 googleTab.postMessage(o);
                 
@@ -61,7 +61,7 @@
             
             var tab = opera.extension.tabs.getFocused();
             if (tab) {
-                if (tab.url.indexOf("mail.google.com") == -1) {
+                if (tab.url.indexOf(".google.") == -1) {
                     event.source.postMessage({action: cgmMessages.WRONG_URL_MSG});
                     console.log('CGM, background, sent wrong url notification to popup');
                     return;
@@ -73,6 +73,12 @@
                 opera.postError('CGM, background, no active tab');
             }
         }
+    }
+    
+    function getUrl()
+    {
+        var tab = opera.extension.tabs.getFocused();
+        return tab.url;
     }
     //console.log('storage: ' + window.localStorage.getItem('linksOrder'));
     </script>
