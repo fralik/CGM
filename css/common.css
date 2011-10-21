@@ -1,0 +1,27 @@
+/* Common CSS */
+
+body {
+    font-size: 72.5%;
+    font-family: "Trebuchet MS", Helvetica, Arial,  Verdana, sans-serif;
+}
+
+.ui-widget-content {
+    width: 150px; 
+    float: left; 
+    margin: 5px; 
+    padding: 5px; 
+    border: none;
+}
+    
+#demo-link { font-size:11px;  padding-top: 6px; clear: both; overflow: hidden; }
+#demo-link a span.ui-icon { float:left; margin-right:3px; }
+
+.donation_blocks {
+    float: left;
+}
+#flattr {
+    margin-left: 5px;
+}
+.paypalButton {
+    border: 0px;
+}

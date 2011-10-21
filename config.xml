@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" version="1.0" defaultlocale="en">
+<widget xmlns="http://www.w3.org/ns/widgets" version="1.1" defaultlocale="en">
     <name short="CGM" xml:lang="en">CGM: Custom Google™ Menu</name>
-    <description xml:lang="ru">Custom Google™ Menu поможет вам изменить расположение ссылок на сервисы Google™ на странице Gmail™. Ссылки представляются в виде прямоугольников, и новая структура задается перетаскиванием этих прямоугольников с помощью мышки.</description>
-    <description xml:lang="en">Custom Google™ Menu aims to help you arrange links to Google™ services on the Gmail™ page. Links are represented as boxes and the new layout is created by dragging and dropping these boxes.</description>
-    <description xml:lang="es">Custom Google™ Menu ayuda a organizar los enlaces a los servicios de Google™ en la página de Gmail™. Los enlaces se representan en la extensión como cajas, y su nuevo diseño se crea arrastrando y soltando las cajas.</description>
-    
-    <description xml:lang="de">Custom Google™ Menu hilft Ihnen Ihre Links für die Google™ Dienstleistungen auf der Gmail™ Seite zu organisieren. Jeder Link wird als ein Kästchen dargestellt und so ordnet man diese Kästchen einfach per Drag-and-Drop an.</description>
+    <description xml:lang="ru">Custom Google™ Menu позволяет вам изменить структуру навигационной панели на страницах сервисов Гугла. Ссылки представляются в виде прямоугольников, и новая структура задается перетаскиванием этих прямоугольников с помощью мышки.</description>
+    <description xml:lang="en">Custom Google™ Menu allows you to rearrange links to Google services on any Google page. Links are represented as boxes and the new layout is created by dragging and dropping these boxes.</description>
+    <description xml:lang="es">Custom Google™ Menu ayuda a organizar los enlaces a los servicios de Google en cualquier página de Google. Los enlaces se representan en la extensión como cajas, y su nuevo diseño se crea arrastrando y soltando las cajas.</description>    
+    <description xml:lang="de">Custom Google™ Menu hilft Ihnen Ihre Links für die Google Dienstleistungen auf den Google Seiten zu organisieren. Jeder Link wird als ein Kästchen dargestellt und so ordnet man diese Kästchen einfach per Drag-and-Drop an.</description>
     <author href="https://github.com/fralik">Vadim Frolov</author>
     <icon src="icons/cgm64.png"/>
     <access origin="https://ajax.googleapis.com" subdomains="true"/>
@@ -16,6 +15,10 @@
     <access origin="http://money.yandex.ru" subdomains="true"/>
     <access origin="https://ssl.google-analytics.com" subdomains="true"/>
     <access origin="http://www.google-analytics.com" subdomains="true"/>
-    <access origin="https://www.google.com/*" subdomains="true"/>
-    <access origin="https://www.google.com/*" subdomains="true"/>
+    <access origin="https://www.google.com" subdomains="true"/>
+    <access origin="https://www.google.com" subdomains="true"/>
+    <access origin="https://mc.yandex.ru" subdomains="true" />
+    <access origin="http://mc.yandex.ru" subdomains="true" />
+    <access origin="http://api.flattr.com" subdomains="true" />
+    <access origin="http://flattr.com" subdomains="true" />
 </widget>

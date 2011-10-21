@@ -37,6 +37,9 @@ cgm = {
     // CSS classes of a link to current service (GMail)
     currentServiceClass: null,
     
+    // name of the service, which is currently openned
+    currentServiceName: null,
+    
     // class name of a visible LI element
     visibleLiClass: null,
     
@@ -98,6 +101,7 @@ cgm = {
     },
     
     // Returns text of the link regardless whether it is visible or hidden
+    //  link is a <A> tag that contains link
     getLinkText: function(link) {
         var linkText = "";
         var spans = link.getElementsByTagName('span');
@@ -120,7 +124,7 @@ cgm = {
         var text = cgm.getLinkText(link);
         
         var linkClone = link.cloneNode(true);
-        if (text == "Gmail")
+        if (text == cgm.currentServiceName)
             linkClone.className = cgm.currentServiceClass;
         else
             linkClone.className = cgm.visibleAClass;
@@ -242,8 +246,8 @@ cgm.isChrome = function() {
 cgm.init = function() {
     var gbar, frame;
     
-    if (window.location.hostname.indexOf('mail.google.com') == -1) {
-        cgm.dlog('CGM, injected, initVariables: we are not on Gmail, we are at ' + window.location.hostname);
+    if (window.location.hostname.indexOf('.google.') == -1) {
+        cgm.dlog('CGM, injected, init: we are not on any Google page, we are on ' + window.location.hostname);
         //alert(window.location.hostname);
         return ;
     }
@@ -254,28 +258,35 @@ cgm.init = function() {
         return;
     }
         
-    frame = window.frames["canvas_frame"];
-    if (frame == null) {
-        //cgm.dlog('CGM, injected, initVariables: no frame');
-        //return false;
-        cgm.frameErr++;
-        if (cgm.frameErr == cgm.numErrors) {
-            cgm.frameErr = 0;
-            return;
-        } else
-            return cgm.setTimeout();
-    }
-    
-    if (cgm.isChrome()) {
-        cgm.curDocument = frame.contentDocument;
-    } else {
-        cgm.curDocument = frame.document;
-    }
-    
-    // Google tends to change the ID from time to time.
-    gbar = cgm.curDocument.getElementById('gbz');
+    // NB! Google tends to change the ID from time to time.
+    gbar = document.getElementById('gbz');
     if (gbar == null) {
-        //cgm.dlog('CGM, injected, initVariables: no gbar');
+        frame = window.frames["canvas_frame"];
+        if (frame == null) {
+            //cgm.dlog('CGM, injected, init: no frame');
+            //return false;
+            cgm.frameErr++;
+            if (cgm.frameErr == cgm.numErrors) {
+                cgm.frameErr = 0;
+                return;
+            } else
+                return cgm.setTimeout();
+        }
+        
+        if (cgm.isChrome()) {
+            cgm.curDocument = frame.contentDocument;
+        } else {
+            cgm.curDocument = frame.document;
+        }
+        gbar = cgm.curDocument.getElementById('gbz');
+    }
+    else {
+        // We are on some page with Google service, but not on Gmail
+        cgm.curDocument = document;
+    }
+    
+    if (gbar == null) {
+        //cgm.dlog('CGM, injected, init: no gbar');
         //return false;
         cgm.gbarErr++;
         if (cgm.gbarErr == cgm.numErrors) {
@@ -294,41 +305,36 @@ cgm.init = function() {
     }
     
     if (cgm.googleLinksContainer == null) {
-        cgm.dlog('CGM, injected, initVariable: no googleLinksContainer');
-        //return false;
+        //cgm.dlog('CGM, injected, init: no googleLinksContainer');
+        return false;
     }
     
     cgm.copiedLinksContainer = cgm.googleLinksContainer.cloneNode(true);
 
     cgm.visibleLiClass = cgm.googleLinksContainer.firstChild.className;
     links = cgm.googleLinksContainer.firstChild.getElementsByTagName('a');
-    link = links[0];
-    
-    // currently selected service contains more than 1 class 
-    if (link.className.indexOf(' ') > -1) {
-        cgm.currentServiceClass = link.className; 
-        // TODO: save currentServiceName
-        link = cgm.googleLinksContainer.childNodes[1].getElementsByTagName('a')[0];
-    } else {
-        cgm.currentServiceClass = cgm.googleLinksContainer.childNodes[1].getElementsByTagName('a')[0].className;
-    }
-    cgm.visibleAClass = link.className;
     
     cgm.spanClassNames = new Array();
-    
-    spans = link.getElementsByTagName('span');
-    for (i=0; i < spans.length; i++) {
-        cgm.spanClassNames.push(spans[i].className);
-    }
-
-    for (i=0; i < cgm.googleLinksContainer.childNodes.length; i++) {
+    for (i = 0; i < cgm.googleLinksContainer.childNodes.length; i++) {
         var liElement = cgm.googleLinksContainer.childNodes[i];
-        var a_link = liElement.firstChild;
-        if (a_link.id != 'gbztm') // 'gbztm' stays for More link
+        var aLink = liElement.firstChild;
+        if (aLink.className.indexOf(' ') > -1) { // link to the current service has several classes
+            cgm.currentServiceClass = aLink.className;
+            cgm.currentServiceName = cgm.getLinkText(aLink);
+        } else {
+            if (cgm.visibleAClass == null) {
+                cgm.visibleAClass = aLink.className;
+                spans = aLink.getElementsByTagName('span');
+                for (j = 0; j < spans.length; j++) {
+                    cgm.spanClassNames.push(spans[j].className);
+                }
+            }
+        }
+        if (aLink.id != 'gbztm') // 'gbztm' stays for More link
             continue;
-        
+            
         cgm.moreLiElement = liElement;
-        cgm.hiddenLinksContainer = liElement.childNodes[1].firstChild.firstChild;
+        cgm.hiddenLinksContainer = liElement.childNodes[1].firstChild.firstChild;        
     }
     
     cgm.hiddenLiClass = cgm.hiddenLinksContainer.childNodes[0].className;
@@ -392,7 +398,7 @@ cgm.sendLinks = function(port) {
         return;
     }
     
-    //cgm.dlog('CGM, injected, sendLinks: must send links');
+    cgm.dlog('CGM, injected, sendLinks: must send links');
     
     var visibleItems = [];
     var hiddenItems = [];
@@ -458,45 +464,28 @@ cgm.setTimeout = function() {
 cgm.setTimeout();
 
 if (typeof opera !== "undefined") {
-
-    //window.addEventListener('DOMContentLoaded', function() {
-        //cgm.setTimeout();
-        //alert('1');
-    //}, false);
-    
-    // Handles messages from popup in Opera
-
     opera.extension.onmessage = function(event) {
-        if (typeof event.data !== "object")
-        {
+        if (typeof event.data !== "object") {
             cgm.dlog('CGM, injected, Opera onmessage: event.data is not an object! ' + event.data);
-            
             return ;
         }
         
-        if (event.data.action == "messages")
-        {
+        if (event.data.action == "messages") {
             //cgm.dlog('CGM, injected, operaOnmessage: got messages from the background');
             if (!cgm.cgmMessages)
                 cgm.cgmMessages = event.data.messages;
-        } else if (event.data.action == cgm.cgmMessages.PORT_REQUEST)
-        {
+        } else if (event.data.action == cgm.cgmMessages.PORT_REQUEST) {
             //cgm.dlog('CGM, injected, Opera onMessage: got port request');
             
             //background = event.source; // in case you need to send anything to background, just do background.postMessage()
             cgm.operaChannel = new MessageChannel();
 
             event.ports[0].postMessage({action: cgm.cgmMessages.PORT_TO_POPUP}, [cgm.operaChannel.port2]);
-            //popupPort = event.ports[0];
-            //opera.postError('post sent from injected script');
 
             cgm.operaChannel.port1.onmessage = cgm.operaPopupHandler;
             cgm.dlog('CGM, injected, Opera onMessage: set communication channel');
         }
-        else if (event.data.action == cgm.cgmMessages.LAYOUT)
-        {
-            //if (!strLinks)
-                //strLinks = event.data;
+        else if (event.data.action == cgm.cgmMessages.LAYOUT) {
             cgm.makeLayout(event.data);
             
             //cgm.dlog('onmessage, injected, got layout from the background');

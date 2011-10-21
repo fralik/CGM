@@ -1,7 +1,7 @@
-# CGM: Custom Google Menu, v.1.0
+# CGM: Custom Google Menu, v.1.1-devel
 #
 
-Custom Google™ Menu aims to help you arrange links to Google services on the Gmail™ page. Links are represented as boxes and the new layout is created by dragging and dropping these boxes. It works both in Opera and Chrome browsers. This extension is a result of further work on [Reader Is Back](https://github.com/fralik/Reader-is-back) extension.
+Custom Google™ Menu allows you to rearrange links to Google services on any Google page. Links are represented as boxes and the new layout is created by dragging and dropping these boxes. CGM works both in Opera and Chrome browsers. This extension is a result of further work on [Reader Is Back](https://github.com/fralik/Reader-is-back) extension.
 
 ## Installation process
 
@@ -19,7 +19,7 @@ However, you could build the extension from the source code I encorage you to do
 In order to work properly I set acess permissions to some web adresses including google.com. I do not read or access any of your personal information. I do not read or store your browsing history. The source code of the extension is open, so you can check what and how do I do.
 
 ## Issues
-I test the extension before each release, but if you have found a bug, please report it in the [Issue Tracker](https://github.com/fralik/CGM/issues)
+I test the extension before each release, but if you have found a bug, please report it in the [Issue Tracker](https://github.com/fralik/CGM/issues). You can also post to the [user-group](http://groups.google.com/group/cgm-users/).
 
 ## License
 
@@ -27,7 +27,7 @@ CGM by Vadim Frolov is availabe under [GPL v3](http://www.gnu.org/licenses/gpl.t
 
 ## Acknowledgement
 
-Thanks to Gregory Konradt and Julia Aronshtam who helped me with the extension.
+Thanks to Gregory Konradt, Julia Aronshtam and Andrey Skvortsov who helped me with the extension.
 
 ## Legal
 I am not a Google Employee or officially affiliated with Google in any way. This extension is not endorsed by Google. Google, Gmail and the Gmail logo are trademarks of Google Inc. Use of these trademarks is subject to Google Permissions.
