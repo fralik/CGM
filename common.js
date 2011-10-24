@@ -128,7 +128,14 @@ i18n.get = function(msg_id)
 }
 
 var cgm = {};
-cgm.common = {};
+cgm.common = {
+    // name of the variable, which holds information about at what pages we use modified layout
+    storedLayoutsName: "CGM_saved_items",
+    
+    // we store each layout in localStorage by key md5(url)+nameAddon
+    nameAddon: "layout",
+};
+
 
 cgm.common.isChrome = function() {
     if (typeof chrome === "undefined")
@@ -139,36 +146,39 @@ cgm.common.isChrome = function() {
 
 // saves layout object in localStorage. Object must contain fields {action, visible, hidden}.
 cgm.common.saveLayout = function(origin, layout) {
-    var name = hex_md5(origin) + "layout";
-    if (cgm.common.isChrome()) {
-        localStorage[name] = JSON.stringify(layout);
-    } else {
-        window.localStorage.setItem(name, JSON.stringify(layout));
-        console.log('Saved layout');
+    var name = hex_md5(origin) + cgm.common.nameAddon;
+    
+    localStorage[name] = JSON.stringify(layout);
+    
+    var reference = {};
+    try {
+        reference = JSON.parse(localStorage[cgm.common.storedLayoutsName]);
+    } catch (err) {
     }
+    reference[name] = "1";
+    localStorage[cgm.common.storedLayoutsName] = JSON.stringify(reference);
 }
 
 cgm.common.loadLayout = function(origin) {
     var o = {};
-    var name = hex_md5(origin) + "layout";
-    if (cgm.common.isChrome()) {
-        if (localStorage[name])
-            o = JSON.parse(localStorage[name]);
-    } else {
-        if (window.localStorage.getItem(name)) {
-            o = JSON.parse(window.localStorage.getItem(name));
-            //console.log('got layout from localstorage:' + window.localStorage.getItem("layout"));
-        }
-    }
+    var name = hex_md5(origin) + cgm.common.nameAddon;;
     
+    if (localStorage[name]) {
+        o = JSON.pare(localStorage[name]);
+    }
+
     return o;
 }
 
 cgm.common.resetLayout = function() {
-    if (cgm.common.isChrome())
-        localStorage["layout"] = [];
-    else
-        window.localStorage.removeItem("layout");
+    try {
+        reference = JSON.parse(localStorage[cgm.common.storedLayoutsName]);
+        for (var key in reference) {
+            localStorage[key] = [];
+        }
+        localStorage[cgm.common.storedLayoutsName] = [];
+    } catch (err) {
+    }
 }
 
 /*

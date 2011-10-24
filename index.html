@@ -78,7 +78,10 @@
     function getUrl()
     {
         var tab = opera.extension.tabs.getFocused();
-        return tab.url;
+        if (tab)
+            return tab.url;
+        else
+            return "";
     }
     //console.log('storage: ' + window.localStorage.getItem('linksOrder'));
     </script>

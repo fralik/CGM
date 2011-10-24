@@ -93,10 +93,10 @@
     _gaq.push(['_trackPageview']);
 
     $(document).ready(function() {
-
         if (cgm.common.isChrome()) {
         } else {
             origin = opera.extension.bgProcess.getUrl();
+            //alert(origin);
         }
         
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -139,16 +139,12 @@
             }
 
             $('#informer').css('visibility', 'hidden');
-            //var visibleAndHidden = "visible;";
             var visibleItems = [];
             var hiddenItems = [];
             $("#visible li").each(function() {
-                //visibleAndHidden += $(this).attr('id') + ',' + $(this).text() + ';';
                 visibleItems.push({id: $(this).attr('id'), text: $(this).text()});
             });
-            //visibleAndHidden += '##hidden;';
             $("#hidden li").each(function() {
-                //visibleAndHidden += $(this).attr('id') + ',' + $(this).text() + ';';
                 hiddenItems.push({id: $(this).attr('id'), text: $(this).text()});
             });
 
