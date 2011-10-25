@@ -1,2 +1,6 @@
+v 1.1
+  * Opera: added option to show/hide popup button on the toolbar.
+  * Works on any Google page, not only Gmail.
+  
 v 1.0 13.10.2011
- [+] Initial release.
+  * Initial release.

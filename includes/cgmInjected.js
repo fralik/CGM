@@ -247,7 +247,7 @@ cgm.init = function() {
     var gbar, frame;
     
     if (window.location.hostname.indexOf('.google.') == -1) {
-        cgm.dlog('CGM, injected, initVariables: we are not on Gmail, we are at ' + window.location.hostname);
+        cgm.dlog('CGM, injected, init: we are not on any Google page, we are on ' + window.location.hostname);
         //alert(window.location.hostname);
         return ;
     }
@@ -263,7 +263,7 @@ cgm.init = function() {
     if (gbar == null) {
         frame = window.frames["canvas_frame"];
         if (frame == null) {
-            //cgm.dlog('CGM, injected, initVariables: no frame');
+            //cgm.dlog('CGM, injected, init: no frame');
             //return false;
             cgm.frameErr++;
             if (cgm.frameErr == cgm.numErrors) {
@@ -286,7 +286,7 @@ cgm.init = function() {
     }
     
     if (gbar == null) {
-        //cgm.dlog('CGM, injected, initVariables: no gbar');
+        //cgm.dlog('CGM, injected, init: no gbar');
         //return false;
         cgm.gbarErr++;
         if (cgm.gbarErr == cgm.numErrors) {
@@ -305,7 +305,7 @@ cgm.init = function() {
     }
     
     if (cgm.googleLinksContainer == null) {
-        //cgm.dlog('CGM, injected, initVariable: no googleLinksContainer');
+        //cgm.dlog('CGM, injected, init: no googleLinksContainer');
         return false;
     }
     

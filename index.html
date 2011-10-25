@@ -4,12 +4,14 @@
     <script type="text/javascript" src="common.js"></script>
     <script>
     //var googleTab; // tab with openned Google page
+    var popupButton = null;
     
-    window.addEventListener("load", init, false);
-
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-26179092-1']);
     _gaq.push(['_trackPageview']);
+
+    window.addEventListener("load", init, false);
+    window.addEventListener('storage', handleOptionsChange, false);
 
     function init()
     {
@@ -19,22 +21,24 @@
         var s = document.getElementsByTagName('script')[0]; 
         s.parentNode.insertBefore(ga, s);
                 
-        var theButton;
         var popupTitle = i18n.get('popup_title');
-        var ToolbarUIItemProperties =
-        {
+        var toolbarUIItemProperties = {
             title: popupTitle,
             icon: "icons/cgm18.png",
-            popup:
-            {
+            popup: {
                 href: "popup.html",
                 width: 510,
                 height: 530
             }
         }
-
-        theButton = opera.contexts.toolbar.createItem(ToolbarUIItemProperties);
-        opera.contexts.toolbar.addItem(theButton);
+        popupButton = opera.contexts.toolbar.createItem(toolbarUIItemProperties);
+        
+        //var tmp = 'showButton' in widget.preferences;
+        if (('showButton' in widget.preferences) == false) {
+            widget.preferences.showButton = true;
+        }
+        
+        showButton();
 
         opera.extension.onconnect = function(event) {
             //console.log('Registration from ' + event.origin);
@@ -75,15 +79,37 @@
         }
     }
     
-    function getUrl()
-    {
+    function getUrl() {
         var tab = opera.extension.tabs.getFocused();
         if (tab)
             return tab.url;
-        else
-            return "";
+        
+        return "";
     }
-    //console.log('storage: ' + window.localStorage.getItem('linksOrder'));
+    
+    function handleOptionsChange(event) {
+        if (event.key == 'showButton') {
+            showButton();
+        }        
+    }
+    
+    function showButton() {
+        var show = true;
+        if (typeof(widget.preferences.showButton) == 'string')
+            show = (widget.preferences.showButton == 'true');
+        else
+            show = widget.preferences.showButton;
+            
+        //console.log('widget.preferences.showButton is ' + show + ', type ' + typeof(show));
+        
+        if (show == true) {
+            opera.contexts.toolbar.addItem(popupButton);
+            //console.log('Button should be visible');
+        } else {
+            opera.contexts.toolbar.removeItem(popupButton);
+            //console.log('Disabled the button');
+        }
+    }
     </script>
   </head>
   <body>

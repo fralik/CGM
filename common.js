@@ -32,15 +32,15 @@ var i18n = {};
 i18n.messages = {
     'informer_wrong_url' :
     {
-        'default' : 'Sorry! This extension works only on Google&#0153; Gmail&#0153; page. Open Google&#0153; Gmail&#0153; and try this extension once again.',
+        'default' : 'Sorry! This extension works only on Google&#0153; pages. Open any Google&#0153; page and try this extension once again.',
         
-        'ru' : 'Это расширение работает только на странице сервиса Google&#0153; Gmail&#0153;. Откройте страницу Google&#0153; Gmail&#0153; и повторите попытку использования этого расширения.',
+        'ru' : 'Это расширение работает только на страницах сервисов Google&#0153;. Откройте любой сервис Google&#0153; и повторите попытку использования этого расширения.',
         
         'es' : '¡Lo siento! Esta extensión sólo funciona en las  páginas Google&#0153 y Gmail&#0153. Hay que abrir Google&#0153 o Gmail&#0153 y intentarlo de nuevo.',
         
         'es-ES' : '¡Lo siento! Esta extensión sólo funciona en las  páginas Google&#0153 y Gmail&#0153. Hay que abrir Google&#0153 o Gmail&#0153 y intentarlo de nuevo.',
         
-        'de' : 'Diese Erweiterung ist nur an der Google&#0153; Gmail&#0153; Seite verfügbar. Öffnen Sie die Google&#0153; Gmail&#0153; Seite und rufen Sie erneut die Erweiterung auf.'
+        'de' : 'Diese Erweiterung ist nur an deт Google&#0153; Seiten verfügbar. Öffnen Sie die Google&#0153; Seite und rufen Sie erneut die Erweiterung auf.'
     },
     'error_few_visible' :
     {
@@ -159,12 +159,13 @@ cgm.common.saveLayout = function(origin, layout) {
     localStorage[cgm.common.storedLayoutsName] = JSON.stringify(reference);
 }
 
+// TODO: be ready for the update. Try reading layout by previous key ("layout")
 cgm.common.loadLayout = function(origin) {
     var o = {};
     var name = hex_md5(origin) + cgm.common.nameAddon;;
     
     if (localStorage[name]) {
-        o = JSON.pare(localStorage[name]);
+        o = JSON.parse(localStorage[name]);
     }
 
     return o;
