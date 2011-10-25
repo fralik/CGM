@@ -7,7 +7,7 @@
     "content_scripts" : 
     [
         {
-            "matches" : ["*://mail.google.com/*"],
+            "matches" : ["*://*.google.com/*", "*://*.google.de/*", "*://*.google.co.uk/*", "*://*.google.se/*"],
             "run_at" : "document_idle",
             "all_frames" : false,
             "js" : ["common.js", "includes/cgmInjected.js"]
@@ -27,6 +27,6 @@
     },
     "permissions": 
     [
-        "tabs", "*://ajax.googleapis.com/*", "*://ssl.google-analytics.com/*", "*://www.google.com/*"
+        "tabs", "*://ajax.googleapis.com/*", "*://ssl.google-analytics.com/*"
     ]
 }

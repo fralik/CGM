@@ -9,18 +9,18 @@
  * file. Please review the following information to ensure the GNU General
  * Public License version 3.0 requirements will be met:
  * http://www.gnu.org/copyleft/gpl.html.
- * 
+ *
  * Other Usage
  * Alternatively, this file may be used in accordance with the terms and
  * conditions contained in a signed written agreement between you and Vadim Frolov.
- * 
+ *
  * This file provides objects and function that should be shared between all components of the extension.
  */
 var cgmMessages = {
-    WRONG_URL_MSG : "Wrong url!", 
-    SEND_LINKS: "cgm: Send links!", 
+    WRONG_URL_MSG : "Wrong url!",
+    SEND_LINKS: "cgm: Send links!",
     RELOAD: "cgm: reload!",
-    PORT_REQUEST: "cgm: send a port", 
+    PORT_REQUEST: "cgm: send a port",
     PORT_TO_POPUP: "Here is a port to the currently focused tab",
     LAYOUT: "layout",
     MESSAGES: "messages",
@@ -33,35 +33,35 @@ i18n.messages = {
     'informer_wrong_url' :
     {
         'default' : 'Sorry! This extension works only on Google&#0153; pages. Open any Google&#0153; page and try this extension once again.',
-        
+
         'ru' : 'Это расширение работает только на страницах сервисов Google&#0153;. Откройте любой сервис Google&#0153; и повторите попытку использования этого расширения.',
-        
+
         'es' : '¡Lo siento! Esta extensión sólo funciona en las  páginas Google&#0153 y Gmail&#0153. Hay que abrir Google&#0153 o Gmail&#0153 y intentarlo de nuevo.',
-        
+
         'es-ES' : '¡Lo siento! Esta extensión sólo funciona en las  páginas Google&#0153 y Gmail&#0153. Hay que abrir Google&#0153 o Gmail&#0153 y intentarlo de nuevo.',
-        
+
         'de' : 'Diese Erweiterung ist nur an deт Google&#0153; Seiten verfügbar. Öffnen Sie die Google&#0153; Seite und rufen Sie erneut die Erweiterung auf.'
     },
     'error_few_visible' :
     {
         'default' : 'Sorry, but you can not leave less than 4 items in the list with visible links. Please, rearrange the items and press Save again.',
-        
+
         'ru' : 'К сожалению, вы не можете оставить меньше четырех видимых ссылок. Пожалуйста, задайте новую структуру и нажмите Сохранить еще раз.',
-        
+
         'es' : '¡Lo siento! pero no se puede dejar menos de 4 elementos en la lista de enlaces visibles.',
         'es-ES' : '¡Lo siento! pero no se puede dejar menos de 4 elementos en la lista de enlaces visibles.',
-        
+
         'de' : 'Leider dürfen Sie nicht weniger als 4 sichtbaren Links haben. Bitte, bearbeiten Sie die Liste und drücken Sie erneute Speichern'
     },
     'error_few_hidden' :
     {
         'default' : 'Sorry, but you can not leave less than 6 items in the list with hidden links. Please, rearrange the items and press Save again.',
-        
+
         'ru' : 'К сожалению, вы не можете оставить меньше шести невидимых ссылок. Пожалуйста, задайте новую структуру и нажмите Сохранить еще раз.',
-        
+
         'es' : '¡Lo siento! pero no se puede dejar menos de 6 enlaces invisibles.',
         'es-ES' : '¡Lo siento! pero no se puede dejar menos de 4 elementos en la lista de enlaces visibles.',
-        
+
         'de' : 'Leider dürfen Sie nicht weniger als 6 unsichtbaren Links haben. Bitte, bearbeiten Sie die Liste und drücken Sie erneut Speichern.'
     },
     'popup_title' :
@@ -76,10 +76,10 @@ i18n.messages = {
     {
         'default' : 'Drag items from one list to another. Press <a class="action save" href="#">Save</a> when you are done. Press <a href="#" class="action reset">Reset</a> to restore original Google&#0153; menu.',
         'ru' : 'Для изменения структуры меню перетащите элементы из одного списка в другой. Нажмите <a class="action save" href="#">Сохранить</a>, чтобы сохранить текущее расположение ссылок. Нажмите <a href="#" class="action reset">Сбросить</a>, чтобы вернуться к оригинальному меню от Google&#0153;.',
-        
+
         'es' : 'Para modificar el menú arrastre los elementos de la primera lista al otra. Pulse <a class="action save" href="#">Guardar</a> cuando esté listo. Pulse <a href="#" class="action reset">Reinicio</a> para volver al menú original de Google&#0153;.',
         'es-ES' : 'Para modificar el menú arrastre los elementos de la primera lista al otra. Pulse <a class="action save" href="#">Guardar</a> cuando esté listo. Pulse <a href="#" class="action reset">Reinicio</a> para volver al menú original de Google&#0153;.',
-        
+
         'de' : 'Um die Struktur zu ändern, ziehen Sie die Elemente aus einer Liste in die andere. Drücken Sie <a class="action save" href="#">Speichern</a>, um die neue Konfiguration zu speichern. Drücken Sie <a href="#" class="action reset">Abbrechen</a>, um zu der ursprunglichen Konfiguration zurückzukehren.'
     },
     'save_text' :
@@ -131,8 +131,8 @@ var cgm = {};
 cgm.common = {
     // name of the variable, which holds information about at what pages we use modified layout
     storedLayoutsName: "CGM_saved_items",
-    
-    // we store each layout in localStorage by key md5(url)+nameAddon
+
+    // we store each layout in localStorage by key "md5(url)+nameAddon"
     nameAddon: "layout",
 };
 
@@ -146,10 +146,14 @@ cgm.common.isChrome = function() {
 
 // saves layout object in localStorage. Object must contain fields {action, visible, hidden}.
 cgm.common.saveLayout = function(origin, layout) {
+    var protocol = origin.indexOf(':');
+    if (protocol > -1) {
+        origin = origin.substring(protocol);
+    }
     var name = hex_md5(origin) + cgm.common.nameAddon;
-    
+
     localStorage[name] = JSON.stringify(layout);
-    
+
     var reference = {};
     try {
         reference = JSON.parse(localStorage[cgm.common.storedLayoutsName]);
@@ -162,8 +166,18 @@ cgm.common.saveLayout = function(origin, layout) {
 // TODO: be ready for the update. Try reading layout by previous key ("layout")
 cgm.common.loadLayout = function(origin) {
     var o = {};
-    var name = hex_md5(origin) + cgm.common.nameAddon;;
-    
+    var protocol = origin.indexOf(':');
+    if (protocol > -1) {
+        origin = origin.substring(protocol);
+    }
+    var name = hex_md5(origin) + cgm.common.nameAddon;
+
+    // hande storage of version 1.0
+    if (localStorage[cgm.common.nameAddon]) {
+        localStorage[name] = localStorage[cgm.common.nameAddon];
+        localStorage[cgm.common.nameAddon] = [];
+    }
+
     if (localStorage[name]) {
         o = JSON.parse(localStorage[name]);
     }
