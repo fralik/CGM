@@ -458,7 +458,7 @@ cgm.operaPopupHandler = function(event) {
 }
 
 cgm.setTimeout = function() {
-    setTimeout(cgm.init, 500);
+    setTimeout(cgm.init, 100);
 };
     
 cgm.setTimeout();

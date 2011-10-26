@@ -94,11 +94,14 @@
 
     $(document).ready(function() {
         if (cgm.common.isChrome()) {
+            chrome.tabs.getSelected(null, function(tab) {
+                origin = tab.url;
+                saveOrigin(tab.url);
+            });
         } else {
             origin = opera.extension.bgProcess.getUrl();
-            //alert(origin);
         }
-        
+
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = 'https://ssl.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
@@ -161,7 +164,7 @@
             window.close();
         });
 
-        if (typeof chrome !== "undefined") {
+        if (cgm.common.isChrome()) {
             chrome.tabs.getSelected(null, function(tab) {
                 var port = chrome.tabs.connect(tab.id, {name: cgmMessages.PORT_NAME});
                 savePort(port);
@@ -197,7 +200,8 @@
                     popupPort.onmessage = injectListener;
                 }
 
-                // always get links from the injected. This is done in case user switched the language elsewhere.
+                // always get links from the injected. This is done in case user switched 
+                // the language elsewhere.
                 // Then we'll get proper text from injected.
                 sendMessage({action: cgmMessages.SEND_LINKS});
             } else if (event.data.action == cgmMessages.WRONG_URL_MSG) {
@@ -207,10 +211,16 @@
         }
     }
 
-    // Saves communication port for further use. This function is used
-    // to save the port in Chrome from a nested function.
+    // Saves communication port for further use. This function is used in Chrome and is called from 
+    // a nested function.
     function savePort(port) {
         popupPort = port;
+    }
+    
+    // Save URL of a current tab. This function is used in Chrome and is called from a nested 
+    // function.
+    function saveOrigin(url) {
+        origiv = url;
     }
 
     function sendMessage(message) {

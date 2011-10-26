@@ -12,7 +12,7 @@
                     //console.error('cgm, background, must send layout to injected');
                     chrome.pageAction.show(sender.tab.id);
                     
-                    var o = cgm.common.loadLayout();
+                    var o = cgm.common.loadLayout(sender.tab.url);
                     sendResponse(o);
                 } else if (request.action == "show_popup_icon") {
                     chrome.pageAction.show(sender.tab.id);

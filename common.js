@@ -170,9 +170,13 @@ cgm.common.loadLayout = function(origin) {
     if (protocol > -1) {
         origin = origin.substring(protocol);
     }
+    
+    if (typeof(origin) == 'undefined')
+        return o;
+
     var name = hex_md5(origin) + cgm.common.nameAddon;
 
-    // hande storage of version 1.0
+    // handle storage of version 1.0
     if (localStorage[cgm.common.nameAddon]) {
         localStorage[name] = localStorage[cgm.common.nameAddon];
         localStorage[cgm.common.nameAddon] = [];
