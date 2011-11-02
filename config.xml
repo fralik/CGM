@@ -18,4 +18,5 @@
     <access origin="http://www.google-analytics.com" subdomains="true"/>
     <access origin="https://www.google.com/*" subdomains="true"/>
     <access origin="https://www.google.com/*" subdomains="true"/>
+    <access origin="https://mc.yandex.ru/*" subdomains="true" />
 </widget>

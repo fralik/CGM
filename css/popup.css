@@ -1,0 +1,25 @@
+#informer {
+    width: 450px;
+    margin: 7px;
+    padding: 3px;
+    border: none;
+}
+#popup_usage_description, #donation_text {
+    width: 460px;
+}
+#visible, #hidden { 
+    list-style-type: none; 
+    margin: 10px; 
+    padding: 0; 
+    margin-right: 10px; 
+}
+#visible li, #hidden li { 
+    margin: 0 5px 5px 5px; 
+    padding: 5px; 
+    font-size: 1.2em; 
+    width: 120px; 
+}
+body {
+    min-width: 510px;
+    overflow-x:hidden;
+}
