@@ -6,21 +6,11 @@
     //var googleTab; // tab with openned Google page
     var popupButton = null;
     
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-26179092-1']);
-    _gaq.push(['_trackPageview']);
-
     window.addEventListener("load", init, false);
     window.addEventListener('storage', handleOptionsChange, false);
 
     function init()
     {
-        var ga = document.createElement('script'); 
-        ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; 
-        s.parentNode.insertBefore(ga, s);
-                
         var popupTitle = i18n.get('popup_title');
         var toolbarUIItemProperties = {
             title: popupTitle,
@@ -33,9 +23,13 @@
         }
         popupButton = opera.contexts.toolbar.createItem(toolbarUIItemProperties);
         
-        //var tmp = 'showButton' in widget.preferences;
         if (('showButton' in widget.preferences) == false) {
+            //console.log('cgm, no showButton');
             widget.preferences.showButton = true;
+        }
+        else {
+            if (widget.preferences.getItem('showButton') == null)
+                widget.preferences.showButton = true;
         }
         
         showButton();

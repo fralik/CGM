@@ -113,6 +113,20 @@ i18n.messages = {
         'es' : 'Si se gusta esta extensión ¿porque lo considerar una donación? Su apoyo se va a fomentar un mayor desarrollo.',
         'es-ES' : 'Si se gusta esta extensión ¿porque lo considerar una donación? Su apoyo se va a fomentar un mayor desarrollo.',
         'de' : 'Sollten Sie die Erweiterung für Sich nützlich finden, könnten Sie die weitere Entwicklung mit einer Spende unterstützen.'
+    },
+    'options_description':
+    {
+        'default': 'There is only one option at the moment. If you uncheck it, then the popup button won\'t be visible on the toolbar.',
+        'ru': 'Доступна только одна настройка. Если вы выключите чек–бокс, то кнопка расширения не будет показываться на панели инструментов.',
+        'es': '',
+        'de': 'Es gibt nur eine Einstellung. Deaktivieren Sie das Kontroll um den Button der Erweiterung zu ausblenden. '
+    },
+    'show_button_label':
+    {
+        'default': 'Show extension button on the toolbar',
+        'ru': 'Показывать кнопку расширения на панели инструментов',
+        'es': '',
+        'de': 'Zeige den Button der Erweiterung auf dem Paneel'
     }
 };
 

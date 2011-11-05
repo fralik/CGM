@@ -398,7 +398,7 @@ cgm.sendLinks = function(port) {
         return;
     }
     
-    //cgm.dlog('CGM, injected, sendLinks: must send links');
+    cgm.dlog('CGM, injected, sendLinks: must send links');
     
     var visibleItems = [];
     var hiddenItems = [];

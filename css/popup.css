@@ -1,10 +1,18 @@
+body {
+    min-width: 510px;
+    overflow-x:hidden;
+}
+div.demo {
+    padding:12px;
+    font-family: "Trebuchet MS", Arial, Helvetica, Verdana, sans-serif;
+}
 #informer {
     width: 450px;
     margin: 7px;
     padding: 3px;
     border: none;
 }
-#popup_usage_description, #donation_text {
+#popup_usage_description, #donations {
     width: 460px;
 }
 #visible, #hidden { 
@@ -19,7 +27,8 @@
     font-size: 1.2em; 
     width: 120px; 
 }
-body {
-    min-width: 510px;
-    overflow-x:hidden;
+.action { 
+    color: #333333; 
+    text-decoration: none; 
+    border-bottom:1px dashed;
 }

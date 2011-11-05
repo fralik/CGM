@@ -2,7 +2,7 @@
 
 body {
     font-size: 72.5%;
-    font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+    font-family: "Trebuchet MS", Helvetica, Arial,  Verdana, sans-serif;
 }
 
 .ui-widget-content {
@@ -13,22 +13,15 @@ body {
     border: none;
 }
     
-div.demo {
-    padding:12px;
-    font-family: "Trebuchet MS", "Arial", "Helvetica", "Verdana", "sans-serif";
-}
-
 #demo-link { font-size:11px;  padding-top: 6px; clear: both; overflow: hidden; }
 #demo-link a span.ui-icon { float:left; margin-right:3px; }
 
-.action { 
-    color: #333333; 
-    text-decoration: none; 
-    border-bottom:1px dashed;
-}
-#paypal {
+.donation_blocks {
     float: left;
 }
-#yandex {
-    float: center;
+#flattr {
+    margin-left: 5px;
+}
+.paypalButton {
+    border: 0px;
 }

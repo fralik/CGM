@@ -1,6 +1,6 @@
 ﻿{
     "name": "CGM: Custom Google™ Menu",
-    "version": "1.0",
+    "version": "1.1",
     "description": "__MSG_extDescription__",
     "default_locale": "en",
     "background_page" : "background.html",
@@ -58,7 +58,7 @@
             ],
             "run_at" : "document_idle",
             "all_frames" : false,
-            "js" : ["common.js", "includes/cgmInjected.js"]
+            "js" : ["js/common.js", "includes/cgmInjected.js"]
         }
     ],
     "page_action": 
@@ -75,6 +75,7 @@
     },
     "permissions": 
     [
-        "tabs", "*://ajax.googleapis.com/*", "*://ssl.google-analytics.com/*"
+        "tabs", "*://ajax.googleapis.com/*", "*://ssl.google-analytics.com/*", "*://mc.yandex.ru/*", 
+                "*://api.flattr.com/*", "*://flattr.com/*"
     ]
 }

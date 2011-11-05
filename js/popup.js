@@ -10,11 +10,15 @@ _gaq.push(['_trackPageview']);
 
 function createLinks(layout) {
     if (layout == undefined || !(layout.hasOwnProperty('visible')) || !(layout.hasOwnProperty('hidden')) )
+    {
+        console.error('CGM, popup, createLinks: layout is undefined');
         return ;
+    }
 
     //console.log('CGM, popup, createLinks');
     parseLinksAndAdd(layout.visible, "visible");
     parseLinksAndAdd(layout.hidden, "hidden");
+    $('#list_area').css('visibility', 'visible');
 }
 
 function parseLinksAndAdd(links, containerId) {
@@ -26,6 +30,7 @@ function parseLinksAndAdd(links, containerId) {
         className = "ui-state-highlight";
 
     var selector = "#" + containerId;
+    
     for (var i=0; i < links.length; i++) {
         $(selector).append('<li class="' + className + '" id="' + links[i].id + '">' + links[i].text + '</li>');
     }
@@ -44,6 +49,13 @@ $(document).ready(function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = 'https://ssl.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    // <-- flattr code
+    var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+    t.parentNode.insertBefore(s, t);
+    // --> flattr code
 
     $( "#visible, #hidden" ).sortable({
         connectWith: ".connectedSortable",
@@ -59,14 +71,17 @@ $(document).ready(function() {
             $("#informer").html(i18n.get("informer_wrong_url"));
             $("#informer").css('font-size','16px');
             $(".demo").css('visibility', 'hidden');
+            $(".demo").css('display', 'none');
         }
     }
+    
+    $('#list_area').css('visibility', 'hidden');
 
     $('#popup_usage_description').html(i18n.get('popup_usage_description'));
     $('.save').html(i18n.get('save_text'));
     $('#visible_list_text').html(i18n.get('visible_list_text'));
     $('#hidden_list_text').html(i18n.get('hidden_list_text'));
-    $('#donation_text').html(i18n.get('donation_text'));
+    $('#donations').html(i18n.get('donation_text'));
 
     $(".save").click(function() {
         if ($('#visible li').length < 4) {
@@ -116,11 +131,11 @@ $(document).ready(function() {
 // Chrome and Opera differ in msg format for listener. Opera
 // sets actual data in .data property.
 function injectListener(msg) {
-    //console.error('in popup listener:' + msg.data);
     var actualMsg = msg;
     if (typeof opera !== "undefined") {
         actualMsg = msg.data;
     }
+    //console.error('CGM, popup, injectListener: action in message is: ' + actualMsg.action);
     if (actualMsg.action == cgmMessages.LAYOUT) {
         createLinks(actualMsg);
     }

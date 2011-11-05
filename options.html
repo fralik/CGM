@@ -1,13 +1,46 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="options.css">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>CGM options</title>
-    <script src="js/options.js" type="text/javascript"></script>
-    <!--<script src="js/watch.js" type="text/javascript"></script>-->
+    <link rel="stylesheet" href="css/options.css">
+    <link rel="stylesheet" href="css/common.css" />
 </head>
 <body>
+    <header>
+        <img src="icons/cgm64.png" alt="App icon">
+        <h1 id="widget-name">CGM v1.1</h1>
+        <h2>Made by <span id="widget-author">Vadim Frolov</span></h2>
+    </header>
+    <section>
+        <p id="options_description">There is only one option at the moment. If you uncheck it, then the popup button won't be visible on the toolbar.</p>
+        <fieldset>
+            <input type="checkbox" name="showButton" id="showButton" value="show" /><label for="showButton" id="show_button_label">Show extension button on the toolbar</label>
+            <br />
+        </fieldset>
+    </section>
+    <footer>
+        <p id="donations">If you like this extension, please, consider a donation. It will encourage me for further development.</p>
+        <div id="paypal" class="donation_blocks">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" name="paypal" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input type="hidden" name="hosted_button_id" value="4EVHZDWEYQZLN" />
+                <input class="paypalButton" type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" name="submit" alt="PayPal — The safer, easier way to pay online."/>
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+            </form>
+        </div>
+        <div id="yandex" class="donation_blocks">
+            <form name="yand" style="margin: 0; padding: 0 0 2px;" action="https://money.yandex.ru/donate.xml" method="post" target="_blank">
+                <input type="hidden" name="to" value="410011106982479" />
+                <input type="hidden" name="s5" value="1rub" />
+                <input type="submit" value="Yandex.Money" />
+            </form>
+        </div>
+        <div id="flattr" class="donation_blocks">
+            <a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://github.com/fralik/cgm"></a>
+        </div>
+    </footer>
+    
     <!-- Yandex.Metrika counter -->
     <div style="display:none;"><script type="text/javascript">
     (function(w, c) {
@@ -19,23 +52,10 @@
         });
     })(window, "yandex_metrika_callbacks");
     </script></div>
-    <script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+    <script src="https://mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
     <!-- /Yandex.Metrika counter -->
-    
-    <header>
-        <img src="icons/cgm64.png">
-        <h1 id="widget-name">CGM v1.1</h1>
-        <h2>Made by <span id="widget-author">Vadim Frolov</h2>
-    </header>
-    <section>
-        <p>There is only one option at the moment. If you uncheck it, then the popup button won't be visible on the toolbar.</p>
-        <fieldset>
-            <input type="checkbox" name="showButton" id="showButton" value="show" /><label for="showButton">Show extension's button on the toolbar</label>
-            <br />
-        </fieldset>
-    </section>
-    <footer>
-        <p>Powered</p>
-    </footer>
+
+    <script src="js/common.js" type="text/javascript"></script>
+    <script src="js/options.js" type="text/javascript"></script>
 </body>
 </html>
