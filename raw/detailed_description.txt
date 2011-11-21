@@ -1,19 +1,25 @@
 ﻿========================== en ==========================
 
-After you install the extension, new icon will appear on the toolbar. Simply click this icon when you are on the GMail™ page and have fun rearranging the links! If the GMail™ page was open before you install the extension, you should reload GMail™.
+After you install the extension, new icon will appear on the toolbar. Simply click this icon when you are on any Google page and have fun rearranging the links! If the Google page was open before you have installed the extension, you should reload it.
 
 Make sure you allow interaction with secure pages in extension's privacy settings! Otherwise the extension may not work.
 
+Use the options page to hide the extension icon from the toolbar.
+
 ========================== ru ==========================
 
-После установки приложения на панели инструментов появится новый значок. Щелкните мышкой по этому значку и вы сможете начать изменять структуру ссылок. Если страница почты Гугла была открыта еще до установки расширения, то перезагрузите её.
+После установки приложения на панели инструментов появится новый значок. Щелкните мышкой по этому значку, когда вы находитесь на какой–нибудь странице Гугла, и вы сможете начать изменять структуру меню. Если страница Гугла была открыта еще до установки расширения, то перезагрузите её.
 
 Убедитесь, что вы разрешили доступ к защищенным страницам в настройках конфиденциальности расширения. В противном случае расширение может не работать.
 
+Вы можете спрятать значок расширения с панели инструментов, воспользовавшись страницей настроек.
+
 ========================== de ==========================
-Nachdem Sie die Erweiterung installieren haben, wird das neue Symbol auf der Symbolleiste angezeigt. Klicken Sie einfach auf dieses Symbol, wenn Sie auf der Google™ Mail-Seite sind. Viel Spaß beim Erstellen der neuen Ordnung der Links! Wenn die Google™ Mail-Seite war offen, bevor Sie die Erweiterung installieren haben, sollten Sie die Seite neu laden.
+Nachdem Sie die Erweiterung installieren haben, wird das neue Symbol auf der Symbolleiste angezeigt. Klicken Sie einfach auf dieses Symbol, wenn Sie auf der Gooogle™ Seite sind. Viel Spaß beim Erstellen der neuen Ordnung der Links! Wenn die Google™ Seite war offen, bevor Sie die Erweiterung installieren haben, sollten Sie die Seite neu laden.
 
 Stellen Sie sicher, ermöglichen die Interaktion mit sicheren Seiten in Verlängerung der Privatsphäre-Einstellungen! Andernfalls wird die Erweiterung nicht funktioniert.
+
+Verwenden Sie die Optionen um das Symbol der Erweiterungs von der Symbolleiste zu verbergen.
 
 ========================== es ==========================
 El nuevo icono aparecerá en la barra de herramientas después de instalar la extensión. Simplemente hace clic en este icono en la página de Gmail™ y siga reorganizar los enlaces. Si la página de GMail™ fue abierta antes de instalar la extensión, hay que volver a cargarla.

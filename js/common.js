@@ -118,14 +118,16 @@ i18n.messages = {
     {
         'default': 'There is only one option at the moment. If you uncheck it, then the popup button won\'t be visible on the toolbar.',
         'ru': 'Доступна только одна настройка. Если вы выключите чек–бокс, то кнопка расширения не будет показываться на панели инструментов.',
-        'es': '',
+        'es': 'Sólo hay una opción en este momento. Si se desactiva, el botón emergente no será visible en la barra de herramientas.',
+        'es-ES': 'Sólo hay una opción en este momento. Si se desactiva, el botón emergente no será visible en la barra de herramientas.',
         'de': 'Es gibt nur eine Einstellung. Deaktivieren Sie das Kontroll um den Button der Erweiterung zu ausblenden. '
     },
     'show_button_label':
     {
         'default': 'Show extension button on the toolbar',
         'ru': 'Показывать кнопку расширения на панели инструментов',
-        'es': '',
+        'es': 'Mostrar el botón de la extensión en la barra de herramientas',
+        'es-ES': 'Sólo hay una opción en este momento. Si se desactiva, el botón emergente no será visible en la barra de herramientas.',
         'de': 'Zeige den Button der Erweiterung auf dem Paneel'
     }
 };

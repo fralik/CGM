@@ -65,7 +65,7 @@ cgm = {
     currentLayout: null,
 
     // debug mode
-    debug: true,
+    debug: false,
     
     gbarErr: 0,
     frameErr: 0,
