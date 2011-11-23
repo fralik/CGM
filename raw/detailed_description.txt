@@ -1,10 +1,14 @@
-﻿========================== en ==========================
+﻿Opera.
+
+========================== en ==========================
 
 After you install the extension, new icon will appear on the toolbar. Simply click this icon when you are on any Google page and have fun rearranging the links! If the Google page was open before you have installed the extension, you should reload it.
 
 Make sure you allow interaction with secure pages in extension's privacy settings! Otherwise the extension may not work.
 
-Use the options page to hide the extension icon from the toolbar.
+Use the options page to hide the extension icon from the toolbar. 
+
+Please report any issues or feature requests on extension user-group (http://groups.google.com/group/cgm-users/). Source code and additional README file are available on https://github.com/fralik/CGM/
 
 ========================== ru ==========================
 
@@ -12,16 +16,21 @@ Use the options page to hide the extension icon from the toolbar.
 
 Убедитесь, что вы разрешили доступ к защищенным страницам в настройках конфиденциальности расширения. В противном случае расширение может не работать.
 
-Вы можете спрятать значок расширения с панели инструментов, воспользовавшись страницей настроек.
+Вы можете спрятать значок расширения с панели инструментов, воспользовавшись страницей настроек. 
+
+Предложения по улучшению расширения или информацию о багах, пишите, пожалуйста, в группу по адресу http://groups.google.com/group/cgm-users/. Исходный код и расширенный файл с описанием находятся на странице разработки расширения (https://github.com/fralik/CGM/).
 
 ========================== de ==========================
-Nachdem Sie die Erweiterung installieren haben, wird das neue Symbol auf der Symbolleiste angezeigt. Klicken Sie einfach auf dieses Symbol, wenn Sie auf der Gooogle™ Seite sind. Viel Spaß beim Erstellen der neuen Ordnung der Links! Wenn die Google™ Seite war offen, bevor Sie die Erweiterung installieren haben, sollten Sie die Seite neu laden.
+sobald die Erweiterung installiert ist, wird ein neues Symbol auf der Symbolleiste angezeigt. Klicken Sie einfach auf dieses Symbol, wenn Sie auf der Gooogle™ Seite sind. Viel Spaß beim Erstellen der neuen Ordnung der Links! Wenn die Google™ Seite offen war, bevor Sie die Erweiterung installiert haben, sollten Sie die Seite neu laden.
 
-Stellen Sie sicher, ermöglichen die Interaktion mit sicheren Seiten in Verlängerung der Privatsphäre-Einstellungen! Andernfalls wird die Erweiterung nicht funktioniert.
+Stellen Sie sicher, dass der Zugang zu den gesicherten Seiten in den Sicherheitseinstellungen der Erweiterung erlaubt ist! Andernfalls wird die Erweiterung nicht funktionieren.
 
-Verwenden Sie die Optionen um das Symbol der Erweiterungs von der Symbolleiste zu verbergen.
+Verwenden Sie die Einstellungenseite, um das Symbol der Erweiterung von der Symbolleiste zu verbergen. 
+
+Haben Sie Kommentare oder Wünsche? Melden Sie sich bei http://groups.google.com/group/cgm-users/. Die Quellcode und weitere Informationen können Sie unter https://github.com/fralik/CGM/ finden.
 
 ========================== es ==========================
 El nuevo icono aparecerá en la barra de herramientas después de instalar la extensión. Simplemente hace clic en este icono en la página de Gmail™ y siga reorganizar los enlaces. Si la página de GMail™ fue abierta antes de instalar la extensión, hay que volver a cargarla.
 
 Asegúrese que la interacción con las páginas seguras está permitida en la configuración de privacidad de extensión. La extensión puede no funcionar sin el permiso.
+

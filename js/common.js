@@ -36,9 +36,9 @@ i18n.messages = {
 
         'ru' : 'Это расширение работает только на страницах сервисов Google&#0153;. Откройте любой сервис Google&#0153; и повторите попытку использования этого расширения.',
 
-        'es' : '¡Lo siento! Esta extensión sólo funciona en las  páginas Google&#0153 y Gmail&#0153. Hay que abrir Google&#0153 o Gmail&#0153 y intentarlo de nuevo.',
+        'es' : '¡Disculpa! Esta extensión funciona sólo en páginas de Google&#0153. Abre cualquier página de Google&#0153 e inténtalo una vez más.',
 
-        'es-ES' : '¡Lo siento! Esta extensión sólo funciona en las  páginas Google&#0153 y Gmail&#0153. Hay que abrir Google&#0153 o Gmail&#0153 y intentarlo de nuevo.',
+        'es-ES' : '¡Disculpa! Esta extensión funciona sólo en páginas de Google&#0153. Abre cualquier página de Google&#0153 e inténtalo una vez más.',
 
         'de' : 'Diese Erweiterung ist nur an deт Google&#0153; Seiten verfügbar. Öffnen Sie die Google&#0153; Seite und rufen Sie erneut die Erweiterung auf.'
     },
@@ -48,8 +48,8 @@ i18n.messages = {
 
         'ru' : 'К сожалению, вы не можете оставить меньше четырех видимых ссылок. Пожалуйста, задайте новую структуру и нажмите Сохранить еще раз.',
 
-        'es' : '¡Lo siento! pero no se puede dejar menos de 4 elementos en la lista de enlaces visibles.',
-        'es-ES' : '¡Lo siento! pero no se puede dejar menos de 4 elementos en la lista de enlaces visibles.',
+        'es' : '¡Disculpa! Pero no se puede dejar menos que 4 elementos en la lista de enlaces visibles. Por favor, cambia los elementos y selecciona Guardar nuevamente.',
+        'es-ES' : '¡Disculpa! Pero no se puede dejar menos que 4 elementos en la lista de enlaces visibles. Por favor, cambia los elementos y selecciona Guardar nuevamente.',
 
         'de' : 'Leider dürfen Sie nicht weniger als 4 sichtbaren Links haben. Bitte, bearbeiten Sie die Liste und drücken Sie erneute Speichern'
     },
@@ -59,8 +59,8 @@ i18n.messages = {
 
         'ru' : 'К сожалению, вы не можете оставить меньше шести невидимых ссылок. Пожалуйста, задайте новую структуру и нажмите Сохранить еще раз.',
 
-        'es' : '¡Lo siento! pero no se puede dejar menos de 6 enlaces invisibles.',
-        'es-ES' : '¡Lo siento! pero no se puede dejar menos de 4 elementos en la lista de enlaces visibles.',
+        'es' : '¡Disculpa! Pero no se puede dejar menos que 6 enlaces invisibles. Por favor, cambia los elementos y selecciona Guardar nuevamente.',
+        'es-ES' : 'Disculpa! Pero no se puede dejar menos que 6 enlaces invisibles. Por favor, cambia los elementos y selecciona Guardar nuevamente.',
 
         'de' : 'Leider dürfen Sie nicht weniger als 6 unsichtbaren Links haben. Bitte, bearbeiten Sie die Liste und drücken Sie erneut Speichern.'
     },
@@ -77,8 +77,8 @@ i18n.messages = {
         'default' : 'Drag items from one list to another. Press <a class="action save" href="#">Save</a> when you are done. Press <a href="#" class="action reset">Reset</a> to restore original Google&#0153; menu.',
         'ru' : 'Для изменения структуры меню перетащите элементы из одного списка в другой. Нажмите <a class="action save" href="#">Сохранить</a>, чтобы сохранить текущее расположение ссылок. Нажмите <a href="#" class="action reset">Сбросить</a>, чтобы вернуться к оригинальному меню от Google&#0153;.',
 
-        'es' : 'Para modificar el menú arrastre los elementos de la primera lista al otra. Pulse <a class="action save" href="#">Guardar</a> cuando esté listo. Pulse <a href="#" class="action reset">Reinicio</a> para volver al menú original de Google&#0153;.',
-        'es-ES' : 'Para modificar el menú arrastre los elementos de la primera lista al otra. Pulse <a class="action save" href="#">Guardar</a> cuando esté listo. Pulse <a href="#" class="action reset">Reinicio</a> para volver al menú original de Google&#0153;.',
+        'es' : 'Para modificar el menú arrastre los elementos desde la primera lista a la otra. Pulse <a class="action save" href="#">Guardar</a> cuando esté listo. Pulse <a href="#" class="action reset">Reinicio</a> para volver al menú original de Google&#0153;.',
+        'es-ES' : 'Para modificar el menú arrastre los elementos desde la primera lista a la otra. Pulse <a class="action save" href="#">Guardar</a> cuando esté listo. Pulse <a href="#" class="action reset">Reinicio</a> para volver al menú original de Google&#0153;.',
 
         'de' : 'Um die Struktur zu ändern, ziehen Sie die Elemente aus einer Liste in die andere. Drücken Sie <a class="action save" href="#">Speichern</a>, um die neue Konfiguration zu speichern. Drücken Sie <a href="#" class="action reset">Abbrechen</a>, um zu der ursprunglichen Konfiguration zurückzukehren.'
     },
@@ -110,8 +110,8 @@ i18n.messages = {
     {
         'default' : 'If you like this extension, please, consider a donation. It will encourage me for futher development.',
         'ru' : 'Если вам нравится это расширение, сделайте, пожалуйста, пожертвование. Ваша поддержка стимулирует мой интерес к дальнейшей разработке.',
-        'es' : 'Si se gusta esta extensión ¿porque lo considerar una donación? Su apoyo se va a fomentar un mayor desarrollo.',
-        'es-ES' : 'Si se gusta esta extensión ¿porque lo considerar una donación? Su apoyo se va a fomentar un mayor desarrollo.',
+        'es' : 'Si se gusta esta extensión ¿porque no considerar una donación? Su apoyo se va a fomentar un mayor desarrollo.',
+        'es-ES' : 'Si se gusta esta extensión ¿porque no considerar una donación? Su apoyo se va a fomentar un mayor desarrollo.',
         'de' : 'Sollten Sie die Erweiterung für Sich nützlich finden, könnten Sie die weitere Entwicklung mit einer Spende unterstützen.'
     },
     'options_description':
@@ -120,15 +120,15 @@ i18n.messages = {
         'ru': 'Доступна только одна настройка. Если вы выключите чек–бокс, то кнопка расширения не будет показываться на панели инструментов.',
         'es': 'Sólo hay una opción en este momento. Si se desactiva, el botón emergente no será visible en la barra de herramientas.',
         'es-ES': 'Sólo hay una opción en este momento. Si se desactiva, el botón emergente no será visible en la barra de herramientas.',
-        'de': 'Es gibt nur eine Einstellung. Deaktivieren Sie das Kontroll um den Button der Erweiterung zu ausblenden. '
+        'de': 'Es gibt nur eine Einstellung derzeit. Deaktivieren Sie das Kontroll, um das Button der Erweiterung auszublenden. '
     },
     'show_button_label':
     {
         'default': 'Show extension button on the toolbar',
         'ru': 'Показывать кнопку расширения на панели инструментов',
         'es': 'Mostrar el botón de la extensión en la barra de herramientas',
-        'es-ES': 'Sólo hay una opción en este momento. Si se desactiva, el botón emergente no será visible en la barra de herramientas.',
-        'de': 'Zeige den Button der Erweiterung auf dem Paneel'
+        'es-ES': 'Mostrar el botón de la extensión en la barra de herramientas',
+        'de': 'Zeigen das Symbol der Erweiterung auf der Symbolleiste'
     }
 };
 
