@@ -8,7 +8,7 @@ Make sure you allow interaction with secure pages in extension's privacy setting
 
 Use the options page to hide the extension icon from the toolbar. 
 
-Please report any issues or feature requests on extension user-group (http://groups.google.com/group/cgm-users/). Source code and additional README file are available on https://github.com/fralik/CGM/
+Please report any issues or feature requests on extension user-group (http://groups.google.com/group/cgm-users/). Source code and additional README file are available at https://github.com/fralik/CGM/
 
 ========================== ru ==========================
 
@@ -21,16 +21,21 @@ Please report any issues or feature requests on extension user-group (http://gro
 Предложения по улучшению расширения или информацию о багах, пишите, пожалуйста, в группу по адресу http://groups.google.com/group/cgm-users/. Исходный код и расширенный файл с описанием находятся на странице разработки расширения (https://github.com/fralik/CGM/).
 
 ========================== de ==========================
-sobald die Erweiterung installiert ist, wird ein neues Symbol auf der Symbolleiste angezeigt. Klicken Sie einfach auf dieses Symbol, wenn Sie auf der Gooogle™ Seite sind. Viel Spaß beim Erstellen der neuen Ordnung der Links! Wenn die Google™ Seite offen war, bevor Sie die Erweiterung installiert haben, sollten Sie die Seite neu laden.
+Nachdem Sie die Erweiterung installiert haben, wird ein neues Symbol auf der Symbolleiste angezeigt. Klicken Sie einfach auf dieses Symbol, wenn Sie auf der Google™ Seite sind. Viel Spaß beim Erstellen der neuen Ordnung der Links! Wenn die Google™ Seite schon offen war, bevor Sie die Erweiterung installiert haben, sollten Sie die Seite neu laden.
 
-Stellen Sie sicher, dass der Zugang zu den gesicherten Seiten in den Sicherheitseinstellungen der Erweiterung erlaubt ist! Andernfalls wird die Erweiterung nicht funktionieren.
+Stellen Sie sicher, dass die Interaktion mit geschtüzten Seiten in der Privatsphäre-Einstellungen der Erweiterung erlaubt ist, sonst funktionieret die Erweiterung nicht.
 
-Verwenden Sie die Einstellungenseite, um das Symbol der Erweiterung von der Symbolleiste zu verbergen. 
+Um das Symbol der Erweiterung von der Symbolleiste auszublenden, verwenden Sie die demendsprechende Option. 
 
-Haben Sie Kommentare oder Wünsche? Melden Sie sich bei http://groups.google.com/group/cgm-users/. Die Quellcode und weitere Informationen können Sie unter https://github.com/fralik/CGM/ finden.
+Haben Sie Kommentare oder Wünsche? Melden Sie sich unter http://groups.google.com/group/cgm-users/. Die Quellcode und weitere Informationen können Sie unter https://github.com/fralik/CGM/ finden.
 
 ========================== es ==========================
 El nuevo icono aparecerá en la barra de herramientas después de instalar la extensión. Simplemente hace clic en este icono en la página de Gmail™ y siga reorganizar los enlaces. Si la página de GMail™ fue abierta antes de instalar la extensión, hay que volver a cargarla.
 
 Asegúrese que la interacción con las páginas seguras está permitida en la configuración de privacidad de extensión. La extensión puede no funcionar sin el permiso.
+
+Se puede ocultar el icono de la extensión en la página de las configuraciónes.
+
+Por favor informen de los problemas o sugieran nuevas funciones en el grupo de la extensión (http://groups.google.com/group/cgm-users/).
+Se puede ver el código fuente y un README adicional en https://github.com/fralik/CGM/
 
