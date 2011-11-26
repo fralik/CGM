@@ -1,4 +1,4 @@
-# CGM: Custom Google Menu, v.1.1-devel
+# CGM: Custom Google Menu, v.1.1
 #
 
 Custom Google™ Menu allows you to rearrange links to Google services on any Google page. Links are represented as boxes and the new layout is created by dragging and dropping these boxes. CGM works both in Opera and Chrome browsers. This extension is a result of further work on [Reader Is Back](https://github.com/fralik/Reader-is-back) extension.
