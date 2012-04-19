@@ -62,21 +62,24 @@ $(document).ready(function() {
     } else {
         origin = opera.extension.bgProcess.getUrl();
     }
-
+    
     // <-- google analytics code
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = 'https://ssl.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     // --> google analytics code
     
-    // <-- flattr code
-    var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-    s.type = 'text/javascript';
-    s.async = true;
-    s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
-    t.parentNode.insertBefore(s, t);
-    // --> flattr code
-
+    // <-- yandex metrika code
+    (function(w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter10577218 = new Ya.Metrika({id:10577218, enableAll: true, trackHash:true});
+            }
+            catch(e) { }
+        });
+    })(window, "yandex_metrika_callbacks");
+    // --> yandex metrika code
+    
     $( "#visible, #hidden" ).sortable({
         connectWith: ".connectedSortable",
         cursor: "move",
@@ -128,8 +131,8 @@ $(document).ready(function() {
         sendMessage({action: "layout", visible: visibleItems, hidden: hiddenItems});
 
         cgm.common.saveLayout(origin, {action: "layout", visible: visibleItems, hidden: hiddenItems});
-
-        window.close();
+        
+        window.close();        
     });
 
     $('.reset').click(function() {
@@ -168,7 +171,7 @@ if (typeof opera !== "undefined") {
         //alert(event.data.action == cgmMessages.PORT_TO_POPUP);
 
         if (event.data.action == cgmMessages.PORT_TO_POPUP) {
-            console.log('We are in popup: ' + event.source);
+            //console.log('We are in popup: ' + event.source);
             if(event.ports.length > 0 ) {
                 popupPort = event.ports[0];
                 popupPort.onmessage = injectListener;

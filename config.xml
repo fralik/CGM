@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" version="1.1" defaultlocale="en">
+<widget xmlns="http://www.w3.org/ns/widgets" version="1.2" defaultlocale="en">
     <name short="CGM" xml:lang="en">CGM: Custom Google™ Menu</name>
     <description xml:lang="ru">Custom Google™ Menu позволяет вам изменить структуру навигационной панели на страницах сервисов Гугла. Ссылки представляются в виде прямоугольников, и новая структура задается перетаскиванием этих прямоугольников с помощью мышки.</description>
     <description xml:lang="en">Custom Google™ Menu allows you to rearrange links to Google services on any Google page. Links are represented as boxes and the new layout is created by dragging and dropping these boxes.</description>

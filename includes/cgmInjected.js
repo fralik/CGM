@@ -71,7 +71,7 @@ cgm = {
     frameErr: 0,
     makeLayoutErr: 0,
     // possible number of errors before we cancel the event
-    numErrors: 32,
+    numErrors: 64,
     isValid: false,
 
     dlog: function(msg) {
@@ -259,26 +259,34 @@ cgm.init = function() {
     }
         
     // NB! Google tends to change the ID from time to time.
-    gbar = document.getElementById('gbz');
+    var googleBarID = 'gbz';
+    
+    gbar = document.getElementById(googleBarID);
     if (gbar == null) {
-        frame = window.frames["canvas_frame"];
-        if (frame == null) {
-            //cgm.dlog('CGM, injected, init: no frame');
-            //return false;
+        var len = window.frames.length;
+        for (var i = 0; i < len; i++) {
+            if (cgm.isChrome()) {
+                cgm.curDocument = window.frames[i].contentDocument;
+            } else {
+                cgm.curDocument = window.frames[i].document;
+            }
+            
+            gbar = cgm.curDocument.getElementById(googleBarID);
+            if (gbar != null) {
+                cgm.dlog('Found gbar, errors:' + cgm.frameErr);
+                break;
+            }        
+        }
+        
+        if (gbar == null) {
             cgm.frameErr++;
             if (cgm.frameErr == cgm.numErrors) {
+                console.log("CGM: Failed to find Google bar. Quiting.");
                 cgm.frameErr = 0;
                 return;
             } else
-                return cgm.setTimeout();
+                return cgm.setTimeout();            
         }
-        
-        if (cgm.isChrome()) {
-            cgm.curDocument = frame.contentDocument;
-        } else {
-            cgm.curDocument = frame.document;
-        }
-        gbar = cgm.curDocument.getElementById('gbz');
     }
     else {
         // We are on some page with Google service, but not on Gmail
@@ -291,6 +299,7 @@ cgm.init = function() {
         cgm.gbarErr++;
         if (cgm.gbarErr == cgm.numErrors) {
             cgm.gbarErr = 0;
+            cgm.dlog('gbarErr is too big, quiting');
             return;
         } else
             return cgm.setTimeout();
@@ -305,7 +314,7 @@ cgm.init = function() {
     }
     
     if (cgm.googleLinksContainer == null) {
-        //cgm.dlog('CGM, injected, init: no googleLinksContainer');
+        cgm.dlog('CGM, injected, init: no googleLinksContainer');
         return false;
     }
     
@@ -380,7 +389,8 @@ cgm.init = function() {
             //cgm.dlog('CGM, injected, init: got layout from the background, ' + response);
             cgm.makeLayout(response);
         });
-    } 
+    }
+    cgm.dlog('CGM, injected, init: finished');
 }
 
 cgm.sendLinks = function(port) {
@@ -398,7 +408,7 @@ cgm.sendLinks = function(port) {
         return;
     }
     
-    cgm.dlog('CGM, injected, sendLinks: must send links');
+    //cgm.dlog('CGM, injected, sendLinks: must send links');
     
     var visibleItems = [];
     var hiddenItems = [];
@@ -448,12 +458,15 @@ cgm.sendLinks = function(port) {
 cgm.operaPopupHandler = function(event) {
     var msg = event.data;
     if (msg.action == cgm.cgmMessages.SEND_LINKS) {
+        //cgm.dlog('CGM, injected, Opera handler: must send links');
         cgm.sendLinks({});
     } else if (msg.action == cgm.cgmMessages.LAYOUT) {
-        cgm.dlog('CGM, injected, Opera handler: must create layout');
+        //cgm.dlog('CGM, injected, Opera handler: must create layout');
         cgm.makeLayout(msg);
     } else if (msg.action == cgm.cgmMessages.RELOAD) {
         window.location.reload();
+    } else {
+        cgm.dlog('CGM, injected, operaPopupHandler: unknown event, msg: ' + msg.action);
     }
 }
 
@@ -483,14 +496,14 @@ if (typeof opera !== "undefined") {
             event.ports[0].postMessage({action: cgm.cgmMessages.PORT_TO_POPUP}, [cgm.operaChannel.port2]);
 
             cgm.operaChannel.port1.onmessage = cgm.operaPopupHandler;
-            cgm.dlog('CGM, injected, Opera onMessage: set communication channel');
+            //cgm.dlog('CGM, injected, Opera onMessage: set communication channel');
         }
         else if (event.data.action == cgm.cgmMessages.LAYOUT) {
             cgm.makeLayout(event.data);
             
             //cgm.dlog('onmessage, injected, got layout from the background');
         } else {
-            //cgm.dlog('CGM, injected, Opera onMessage: got unknown event ' + event.data);
+            //cgm.dlog('CGM, injected, Opera onMessage: got unknown event ' + event.data + ', action:' + event.data.action);
         }
     }
 }
