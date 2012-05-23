@@ -1,5 +1,5 @@
 ﻿/**
- * Copyright (c) Vadim Frolov, 2011.
+ * Copyright (c) Vadim Frolov, 2011-2012.
  * Contact: fralik@gmail.com
  *
  * GNU General Public License Usage
@@ -162,11 +162,7 @@ cgm.common.isChrome = function() {
 
 // saves layout object in localStorage. Object must contain fields {action, visible, hidden}.
 cgm.common.saveLayout = function(origin, layout) {
-    var protocol = origin.indexOf(':');
-    if (protocol > -1) {
-        origin = origin.substring(protocol);
-    }
-    var name = hex_md5(origin) + cgm.common.nameAddon;
+    var name = cgm.common.prepareStorageName(origin);
 
     localStorage[name] = JSON.stringify(layout);
 
@@ -182,15 +178,8 @@ cgm.common.saveLayout = function(origin, layout) {
 // TODO: be ready for the update. Try reading layout by previous key ("layout")
 cgm.common.loadLayout = function(origin) {
     var o = {};
-    var protocol = origin.indexOf(':');
-    if (protocol > -1) {
-        origin = origin.substring(protocol);
-    }
     
-    if (typeof(origin) == 'undefined')
-        return o;
-
-    var name = hex_md5(origin) + cgm.common.nameAddon;
+    var name = cgm.common.prepareStorageName(origin);
 
     // handle storage of version 1.0
     if (localStorage[cgm.common.nameAddon]) {
@@ -203,6 +192,32 @@ cgm.common.loadLayout = function(origin) {
     }
 
     return o;
+}
+
+// Creates a name that is used to store layout in a local storage out of URL
+cgm.common.prepareStorageName = function(origin) {
+    var chars = [];
+    chars[":"] = "trimLeft";
+    chars["?"] = "trimRight";
+    chars["#"] = "trimRight";
+    
+    for (ch in chars) {
+        var ind = origin.indexOf(ch);
+        var action = chars[ch];
+        if (ind > -1) {
+            if (action == "trimLeft") {
+                origin = origin.substring(ind);
+            } else if (action == "trimRight") {
+                origin = origin.substring(0, ind);
+            }            
+        }
+    }
+    
+    chrome.extension.getBackgroundPage().console.log('origin for layout is ' + origin);
+    
+    var name = hex_md5(origin) + cgm.common.nameAddon;
+    
+    return name;
 }
 
 cgm.common.resetLayout = function() {

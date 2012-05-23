@@ -1,5 +1,5 @@
 ﻿/**
- * Copyright (c) Vadim Frolov, 2011.
+ * Copyright (c) Vadim Frolov, 2011-2012.
  * Contact: fralik@gmail.com
  *
  * GNU General Public License Usage
