@@ -1,7 +1,9 @@
-v 1.2 19.04.2012
+v 1.2 23.05.2012
   * Added support for new GMail interface.
   * Removed donation buttons from popup.
   * Removed flattr button from options page.
+  * Remove parameters from URL so that different URLs of the same service 
+    result in the same custom menu.
   
 v 1.1
   * Opera: added option to show/hide popup button on the toolbar.
