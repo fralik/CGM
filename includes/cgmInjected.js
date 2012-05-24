@@ -248,7 +248,6 @@ cgm.init = function() {
     
     if (window.location.hostname.indexOf('.google.') == -1) {
         cgm.dlog('CGM, injected, init: we are not on any Google page, we are on ' + window.location.hostname);
-        //alert(window.location.hostname);
         return ;
     }
     
@@ -260,22 +259,32 @@ cgm.init = function() {
         
     // NB! Google tends to change the ID from time to time.
     var googleBarID = 'gbz';
+    cgm.curDocument = null;
     
     gbar = document.getElementById(googleBarID);
     if (gbar == null) {
         var len = window.frames.length;
         for (var i = 0; i < len; i++) {
             if (cgm.isChrome()) {
-                cgm.curDocument = window.frames[i].contentDocument;
+                if (window.frames[i]) {
+                    cgm.curDocument = window.frames[i].contentDocument;
+                } else {
+                    // we can only access document through canvas_frame on GMail page
+                    cgm.curDocument = window.frames["canvas_frame"].contentDocument;
+                }
             } else {
                 cgm.curDocument = window.frames[i].document;
+            }
+            
+            if (!cgm.curDocument) {
+                continue;
             }
             
             gbar = cgm.curDocument.getElementById(googleBarID);
             if (gbar != null) {
                 cgm.dlog('Found gbar, errors:' + cgm.frameErr);
                 break;
-            }        
+            }
         }
         
         if (gbar == null) {
@@ -295,7 +304,6 @@ cgm.init = function() {
     
     if (gbar == null) {
         //cgm.dlog('CGM, injected, init: no gbar');
-        //return false;
         cgm.gbarErr++;
         if (cgm.gbarErr == cgm.numErrors) {
             cgm.gbarErr = 0;
@@ -348,7 +356,6 @@ cgm.init = function() {
     
     cgm.hiddenLiClass = cgm.hiddenLinksContainer.childNodes[0].className;
     cgm.hiddenAClass = cgm.hiddenLinksContainer.childNodes[0].firstChild.className;
-    //alert(hiddenLiClass);
     
     cgm.separatorLine = cgm.curDocument.createElement("div");
     cgm.separatorLine.className = cgm.hiddenLiClass;
@@ -356,17 +363,11 @@ cgm.init = function() {
     tmpDiv.className = "gbmt gbmh";
     cgm.separatorLine.appendChild(tmpDiv);
     
-    //return true;
     cgm.isValid = true;
 
     if (cgm.isChrome()) {
         //cgm.dlog('We are in Chrome');
         
-        // // request common messages from the background
-        // chrome.extension.sendRequest({action: "sendMessages"}, function(response) {
-            // cgm.cgmMessages = response.data;
-        // });
-
         // in Chrome we load common.js in the web page namespace
         cgm.cgmMessages = cgmMessages;
         
@@ -436,7 +437,6 @@ cgm.sendLinks = function(port) {
             }
             continue;
         }
-        //hiddenItems += a_link.id + ',' + cgm.getLinkText(a_link) + ';';
         hiddenItems.push({id: a_link.id, text: cgm.getLinkText(a_link)});
     }
     
@@ -471,7 +471,7 @@ cgm.operaPopupHandler = function(event) {
 }
 
 cgm.setTimeout = function() {
-    setTimeout(cgm.init, 100);
+    setTimeout(cgm.init, 1000);
 };
     
 cgm.setTimeout();
