@@ -20,11 +20,6 @@ var toDo = Array();
 var popupPort = null;
 var origin = ""; // URL to which the menu is appplied
 
-// Google analytics
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-26179092-1']);
-_gaq.push(['_trackPageview']);
-
 function createLinks(layout) {
     if (layout == undefined || !(layout.hasOwnProperty('visible')) || !(layout.hasOwnProperty('hidden')) )
     {
@@ -62,12 +57,6 @@ $(document).ready(function() {
     } else {
         origin = opera.extension.bgProcess.getUrl();
     }
-    
-    // <-- google analytics code
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = 'https://ssl.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    // --> google analytics code
     
     // <-- yandex metrika code
     (function(w, c) {
@@ -206,8 +195,4 @@ function sendMessage(message) {
         return true;
     }
     return false;
-}
-
-function trackButton(button_id) {
-    _gaq.push(['_trackEvent', 'button' + button_id, 'clicked']);
 }

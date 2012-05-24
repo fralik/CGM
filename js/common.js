@@ -213,8 +213,6 @@ cgm.common.prepareStorageName = function(origin) {
         }
     }
     
-    chrome.extension.getBackgroundPage().console.log('origin for layout is ' + origin);
-    
     var name = hex_md5(origin) + cgm.common.nameAddon;
     
     return name;
