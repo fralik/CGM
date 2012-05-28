@@ -3,7 +3,6 @@
   <head>
     <script type="text/javascript" src="js/common.js"></script>
     <script>
-    //var googleTab; // tab with openned Google page
     var popupButton = null;
     
     window.addEventListener("load", init, false);
@@ -38,8 +37,7 @@
             //console.log('Registration from ' + event.origin);
             
             if (event.origin.indexOf(".google.") > -1) {
-    
-                var googleTab = event.source;
+                var googleTab = event.source; // tab with openned Google page
                 
                 googleTab.postMessage({action: cgmMessages.MESSAGES, messages: cgmMessages});
                 //console.log('tab: ' + googleTab);
@@ -66,9 +64,9 @@
                 }
                 //tab.postMessage(cgmMessages);
                 tab.postMessage({action: cgmMessages.PORT_REQUEST}, [event.source] );
-                opera.postError('CGM, background, forward port request to injected');
+                //opera.postError('CGM, background, forward port request to injected');
             } else {
-                opera.postError('CGM, background, no active tab');
+                //opera.postError('CGM, background, no active tab');
             }
         }
     }

@@ -71,7 +71,7 @@ cgm = {
     frameErr: 0,
     makeLayoutErr: 0,
     // possible number of errors before we cancel the event
-    numErrors: 64,
+    numErrors: 5,
     isValid: false,
 
     dlog: function(msg) {
@@ -409,7 +409,7 @@ cgm.sendLinks = function(port) {
         return;
     }
     
-    //cgm.dlog('CGM, injected, sendLinks: must send links');
+    cgm.dlog('CGM, injected, sendLinks: I am about to send links');
     
     var visibleItems = [];
     var hiddenItems = [];
@@ -451,17 +451,17 @@ cgm.sendLinks = function(port) {
         }
         
         cgm.operaChannel.port1.postMessage(objToSend);
-        //cgm.dlog('CGM, injected, sendLinks: sent links to popup in Opera');
+        cgm.dlog('CGM, injected, sendLinks: sent links to popup in Opera');
     }
 }
 
 cgm.operaPopupHandler = function(event) {
     var msg = event.data;
     if (msg.action == cgm.cgmMessages.SEND_LINKS) {
-        //cgm.dlog('CGM, injected, Opera handler: must send links');
-        cgm.sendLinks({});
+        cgm.dlog('CGM, injected, Opera handler: I am going to send links');
+        setTimeout(cgm.sendLinks, 100); // set timeout, so that popup will be initialized before links are sent
     } else if (msg.action == cgm.cgmMessages.LAYOUT) {
-        //cgm.dlog('CGM, injected, Opera handler: must create layout');
+        cgm.dlog('CGM, injected, Opera handler: must create layout');
         cgm.makeLayout(msg);
     } else if (msg.action == cgm.cgmMessages.RELOAD) {
         window.location.reload();
@@ -488,7 +488,7 @@ if (typeof opera !== "undefined") {
             if (!cgm.cgmMessages)
                 cgm.cgmMessages = event.data.messages;
         } else if (event.data.action == cgm.cgmMessages.PORT_REQUEST) {
-            //cgm.dlog('CGM, injected, Opera onMessage: got port request');
+            cgm.dlog('CGM, injected, Opera onMessage: got port request');
             
             //background = event.source; // in case you need to send anything to background, just do background.postMessage()
             cgm.operaChannel = new MessageChannel();
@@ -496,7 +496,7 @@ if (typeof opera !== "undefined") {
             event.ports[0].postMessage({action: cgm.cgmMessages.PORT_TO_POPUP}, [cgm.operaChannel.port2]);
 
             cgm.operaChannel.port1.onmessage = cgm.operaPopupHandler;
-            //cgm.dlog('CGM, injected, Opera onMessage: set communication channel');
+            cgm.dlog('CGM, injected, Opera onMessage: set communication channel');
         }
         else if (event.data.action == cgm.cgmMessages.LAYOUT) {
             cgm.makeLayout(event.data);

@@ -43,6 +43,7 @@ function parseLinksAndAdd(links, containerId) {
 
     var selector = "#" + containerId;
     
+    //console.log('popup.js, parseLinksAndAdd: containerId ' + containerId + ', links length ' + links.length);
     for (var i=0; i < links.length; i++) {
         $(selector).append('<li class="' + className + '" id="' + links[i].id + '">' + links[i].text + '</li>');
     }
@@ -145,9 +146,11 @@ $(document).ready(function() {
 function injectListener(msg) {
     var actualMsg = msg;
     if (typeof opera !== "undefined") {
+        //console.log('popup.js, injectListener: got message with data ' + msg.data + ', action is ' + msg.data.action);
         actualMsg = msg.data;
     }
-    //console.error('CGM, popup, injectListener: action in message is: ' + actualMsg.action);
+    
+    //console.log('CGM, popup, injectListener: action in message is: ' + actualMsg.action);
     if (actualMsg.action == cgmMessages.LAYOUT) {
         createLinks(actualMsg);
     }
