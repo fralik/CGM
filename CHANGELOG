@@ -1,6 +1,7 @@
 v 1.3-1
-  * Opera: links are sent to the popup not immediatly, but after a small timeout.
-    This ensures that links arive after popup initialization.
+  * Opera: changed the way popup is presented. The main content becomes invisible
+    only if we are not on Google page. Popup should appear faster as in previous
+    versions.
     
 v 1.3 24.05.2012
   * Chrome: CGM works again on GMail page (release 1.2 broke it).

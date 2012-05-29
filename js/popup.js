@@ -30,7 +30,6 @@ function createLinks(layout) {
     //console.log('CGM, popup, createLinks');
     parseLinksAndAdd(layout.visible, "visible");
     parseLinksAndAdd(layout.hidden, "hidden");
-    $('#list_area').css('visibility', 'visible');
 }
 
 function parseLinksAndAdd(links, containerId) {
@@ -88,8 +87,6 @@ $(document).ready(function() {
         }
     }
     
-    $('#list_area').css('visibility', 'hidden');
-
     $('#popup_usage_description').html(i18n.get('popup_usage_description'));
     $('.save').html(i18n.get('save_text'));
     $('#visible_list_text').html(i18n.get('visible_list_text'));

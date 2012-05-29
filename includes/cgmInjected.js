@@ -459,7 +459,7 @@ cgm.operaPopupHandler = function(event) {
     var msg = event.data;
     if (msg.action == cgm.cgmMessages.SEND_LINKS) {
         cgm.dlog('CGM, injected, Opera handler: I am going to send links');
-        setTimeout(cgm.sendLinks, 100); // set timeout, so that popup will be initialized before links are sent
+        cgm.sendLinks({});
     } else if (msg.action == cgm.cgmMessages.LAYOUT) {
         cgm.dlog('CGM, injected, Opera handler: must create layout');
         cgm.makeLayout(msg);

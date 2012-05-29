@@ -66,6 +66,7 @@
                 tab.postMessage({action: cgmMessages.PORT_REQUEST}, [event.source] );
                 //opera.postError('CGM, background, forward port request to injected');
             } else {
+                event.source.postMessage({action: cgmMessages.WRONG_URL_MSG});
                 //opera.postError('CGM, background, no active tab');
             }
         }
